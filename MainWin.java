@@ -1,36 +1,34 @@
-package com.hoosee.topic1.frame;
+package frame;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import com.hoosee.topic1.dao.TbGoodsDao;
-import com.hoosee.topic1.model.TbGoods;
-
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
+import javax.swing.JTable;
+
+import dao.TbEmployeeDao;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ListSelectionModel;
 
 public class MainWin extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField textField;
+	private JTextField textField;
 	private JTable table;
-
-	private TbGoodsDao tbGoodsDao = new TbGoodsDao();
+	//����dao
+	TbEmployeeDao dao = new TbEmployeeDao();
 
 	/**
-	 * 程序入口
+	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,80 +44,88 @@ public class MainWin extends JFrame {
 	}
 
 	/**
-	 * 创建窗口
+	 * Create the frame.
 	 */
 	public MainWin() {
-		setTitle("商品管理");
+		setTitle("\u4EBA\u4E8B\u4FE1\u606F\u7BA1\u7406");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 659, 378);
+		setBounds(100, 100, 544, 390);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JLabel lblNewLabel = new JLabel("请输入商品名称：");
-		lblNewLabel.setBounds(61, 41, 109, 15);
+		//����
+		this.setLocationRelativeTo(null);
+		
+		JLabel lblNewLabel = new JLabel("\u8BF7\u8F93\u5165\u5458\u5DE5\u59D3\u540D\u5173\u952E\u5B57");
+		lblNewLabel.setBounds(31, 66, 141, 15);
 		contentPane.add(lblNewLabel);
-
+		
 		textField = new JTextField();
-		textField.setBounds(180, 38, 145, 21);
+		textField.setBounds(182, 63, 162, 21);
 		contentPane.add(textField);
 		textField.setColumns(10);
-
-		JButton btnNewButton = new JButton("查询");
-		//为“查询”按钮绑定单击事件，点击查询按钮时调用refreshTable()方法刷新表格数据
+		
+		JLabel lblNewLabel_1 = new JLabel("\u5458\u5DE5\u4FE1\u606F\u7BA1\u7406");
+		lblNewLabel_1.setBounds(143, 21, 135, 15);
+		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton = new JButton("\u67E5\u8BE2");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//获取搜索框中的搜索关键字
-				String goodName = textField.getText();
-				//刷新表格中的数据
-				refreshTable(goodName);
+				refresh();
 			}
 		});
-		btnNewButton.setBounds(347, 37, 79, 23);
+		btnNewButton.setBounds(375, 62, 93, 23);
 		contentPane.add(btnNewButton);
-
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(46, 93, 452, 214);
+		scrollPane.setBounds(41, 118, 439, 168);
 		contentPane.add(scrollPane);
-
+		
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
-		//刷新表格中的数据
-		refreshTable(null);
 		
-		JButton btnNewButton_1 = new JButton("添加");
-		//为“新增”按钮绑定单击事件，点击按钮时弹出新增对话框
+		JButton btnNewButton_1 = new JButton("\u5220\u9664");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddWin addWin = new AddWin();
-				//调用AddWin类中的createAddWin静态方法创建对话框，参数为当前主窗体，作为弹出框的所有者
-				addWin.createAddWin(MainWin.this);
+				int row = table.getSelectedRow();
+				if(row!=-1){
+					String empId = table.getValueAt(row, 0).toString();
+					int temp = JOptionPane.showConfirmDialog(null, "��ȷ��ɾ����Ա����Ϣ");
+					if(temp == 0){
+						dao.delete(empId);
+						JOptionPane.showMessageDialog(null, "ɾ���ɹ�");
+						//ˢ�¸�����
+						refresh();
+					}
+				}else{
+					JOptionPane.showMessageDialog(null, "������ѡ��һ��Ա��ɾ��");
+				}
 			}
 		});
-		btnNewButton_1.setBounds(532, 96, 84, 23);
+		btnNewButton_1.setBounds(363, 296, 93, 23);
 		contentPane.add(btnNewButton_1);
-		setLocationRelativeTo(null);
+		
+		
+		//��һ�μ�������
+		refresh();
 	}
-
-	// 刷新表格数据
-	public void refreshTable(String goodName) {
-		String[] header = new String[] { "商品编号", "商品名称", "数量", "单价" };
-		// 调用数据操纵层查询商品列表
-		List<TbGoods> list = tbGoodsDao.list(goodName);
-		// 将查询结果从list转换成二维数组（JTable插入数据需要二维数组格式）
-		// 二维数组中第一个[]中的数值为行数,第二个[]中的数组为列数
-		Object[][] data = new Object[list.size()][4];
-		for (int i = 0; i < list.size(); i++) {
-			TbGoods tg = list.get(i);
-			data[i][0] = tg.getGoodId();
-			data[i][1] = tg.getGoodName();
-			data[i][2] = tg.getNum();
-			data[i][3] = tg.getPrice();
+	
+	public void refresh(){
+		String empName = textField.getText();
+		String[] header = {"Ա�����","Ա����","�Ա�","�ֻ�","��ַ"};
+		String[][] data = null;
+		if(empName!=null&&!"".equals(empName)){
+			//ģ����ѯ
+			data = dao.select(empName);
+		}else{
+			//��ѯȫ��
+			data = dao.select();
 		}
-		// 借助DefaultTableModel对象刷新JTable中的数据
-		DefaultTableModel dtm = new DefaultTableModel(data, header);
+		//����table������
+		DefaultTableModel dtm = new DefaultTableModel(data,header);
 		table.setModel(dtm);
 	}
 }
