@@ -1,174 +1,256 @@
-/*大屏*/
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
 
-ul{
+/* 消除li前面的点 */
+ul {
     list-style: none;
 }
 
-.header{
+.header {
+    /* 设置headre宽 */
     width: 100%;
+    /* 设置headre高 */
     height: 60px;
-    background-color: rgb(169,250,176);
+    /* 设置headre背景颜色 */
+    background-color: rgb(169, 250, 176);
 }
 
-.header>div{
+/* 设置header的子元素 */
+.header>div {
+    /* 设置header的子元素的宽 */
     width: 72%;
+    /* 设置header的子元素的高 */
     height: 100%;
-    margin: 0px auto;
 
+    /* 设置header的子元素水平居中 */
+    margin: 0px auto;
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置header的子元素的主轴方向 */
     justify-content: space-between;
+    /* 设置header的子元素的侧轴方向 */
     align-items: center;
 }
 
-.header img:nth-of-type(2){
+/* 选择hedear的子元素的第二个元素 */
+.header img:nth-of-type(2) {
+    /* 隐藏后的元素不占据任何空间 */
     display: none;
 }
 
-.header>div>ul{
+/* 设置ul的样式 */
+.header>div>ul {
+    /* 宽 */
     width: 65%;
+    /* 高 */
     height: 100%;
-
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置侧轴方向 */
     align-items: center;
 }
 
-.header>div>ul>li{
+/* 设置li的样式 */
+.header>div>ul>li {
+    /* 宽 */
     width: 20%;
+    /* 高 */
     height: 100%;
-
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置主轴方向 */
     justify-content: center;
+    /* 设置侧轴方向 */
     align-items: center;
-
-    color: rgb(131,155,215);
+    /* 设置li的颜色 */
+    color: rgb(131, 155, 215);
 }
 
-.header>div>ul>li:hover{
+/* 设置li的鼠标移入事件 */
+.header>div>ul>li:hover {
+    /* 设置鼠标移入后li的颜色 */
     color: white;
-    background-color: rgb(93,110,214);
+    /* 设置鼠标移入后li的背景颜色 */
+    background-color: rgb(93, 110, 214);
+    /* 设置鼠标移入后li放大的效果 */
     font-size: 18px;
 }
 
-.tool{
+.tool {
+    /* 设置tool的宽 */
     width: 72%;
+    /* 设置tool的高 */
     height: 100px;
+    /* 设置tool的子元素水平居中 */
     margin: 0px auto;
-
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置主轴方向 */
     justify-content: space-between;
+    /* 设置侧轴方向  */
     align-items: center;
 }
 
-.tool>img{
+/* 设置tool的子元素img的样式 */
+.tool>img {
+    /* 设置tool的子元素img的宽 */
     width: 100px;
+    /* 设置tool的子元素img的高 */
     height: 100px;
+    /* 设置tool的子元素img成圆形 */
     border-radius: 50%;
-    box-shadow: 3px 0px 5px 5px rgb(119,119,119);
+    /* 设置tool的子元素img的背景颜色 */
+    box-shadow: 3px 0px 5px 5px rgb(119, 119, 119);
 }
 
-@keyframes ani{
-    100%{
+/* 设置动画 */
+@keyframes ani {
+    100% {
         transform: rotate(360deg);
     }
 }
 
-.tool>img:hover{
+/* 设置鼠标移入事件 */
+.tool>img:hover {
     animation: ani 2s linear 0s infinite;
 }
 
-.tool>input{
+/* 设置tool的子元素input的样式 */
+.tool>input {
+    /* 设置tool的子元素input的宽 */
     width: 120px;
+    /* 设置tool的子元素input的高 */
     height: 40px;
-    border:3px solid rgb(74,182,214);
+    /* 设置tool的子元素input的边框和颜色 */
+    border: 3px solid rgb(74, 182, 214);
+    /* 设置tool的子元素input的圆角 */
     border-radius: 20px;
+
     box-sizing: border-box;
 }
 
-.tool>input:hover{
+/* 设置tool的子元素input的鼠标移入事件 */
+.tool>input:hover {
+    /* 设置鼠标移入后tool的子元素input的宽 */
     width: 220px;
+    /* 设置鼠标移入后tool的子元素input的背景图 */
     background-image: url(../images/search.png);
+    /* 不允许平补背景图 */
     background-repeat: no-repeat;
+    /* 设置背景图位置 */
     background-position: right;
-
+    /* 设置过渡 */
     transition: width 600ms 0s;
 }
 
-.tab{
+.tab {
+    /* 设置tab的宽 */
     width: 72%;
+    /* 设置tab的高 */
     height: 80px;
+    /* 设置tab的子元素水平居中 */
     margin: 0px auto;
 }
 
-.tab>div{
+.tab>div {
+    /* 设置tab的子元素的宽 */
     width: 240px;
+    /* 设置tab的子元素的高 */
     height: 100%;
-    background-color: rgb(170,255,255);
+    /* 设置tab的子元素的背景颜色 */
+    background-color: rgb(170, 255, 255);
+    /* 设置tab的子元素的圆角 */
     border-radius: 0px 40px 40px 0px;
-
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置主轴方向 */
     justify-content: center;
+    /* 设置侧轴方向 */
     align-items: center;
+    /* 设置字体加租 */
     font-weight: bold;
-    color: rgb(74,182,214);
+    /* 设置字体颜色 */
+    color: rgb(74, 182, 214);
 }
 
-.content{
+.content {
+    /* 设置content的宽 */
     width: 72%;
+    /* 设置content水平居中 */
     margin: 0px auto;
-
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置主轴方向 */
     align-items: center;
+    /* 设置侧轴方向 */
     flex-wrap: wrap;
 }
 
-.content>dl{
+.content>dl {
+    /* 设置content的子元素dl的宽 */
     width: 25%;
+    /* 设置content的子元素dl的高 */
     height: 350px;
-
-    border:4px solid #F9F8E2;
+    /* 设置content的子元素dl的边框 */
+    border: 4px solid #F9F8E2;
     box-sizing: border-box;
 }
 
-.content>dl>dt{
+.content>dl>dt {
+    /* 设置content的子元素dl的子元素dt的宽 */
     width: 100%;
+    /* 设置content的子元素dl的子元素dt的高 */
     height: 75%;
-
+    /* 开启弹性布局 */
     display: flex;
+    /* 设置主轴方向 */
     align-items: center;
+    /* 设置侧轴方向 */
     justify-content: center;
 }
 
-.content>dl>dt>img{
+.content>dl>dt>img {
+    /* 设置content的子元素dl的子元素dt的子元素img的宽 */
     width: 90%;
+    /* 设置content的子元素dl的子元素dt的子元素img的高 */
     height: 90%;
 }
 
-.content>dl>dt>img:hover{
+.content>dl>dt>img:hover {
+    /* 放大 */
     transform: scale(1.3);
+    /* 设置过渡 */
     transition: all 600ms 0s;
 }
 
-.content>dl>dd{
+.content>dl>dd {
+    /* 设置content的子元素dl的子元素dd的宽 */
     width: 100%;
+    /* 设置content的子元素dl的子元素dd的高 */
     height: 7%;
 }
 
-.content>dl>dd:nth-of-type(3){
+.content>dl>dd:nth-of-type(3) {
+    /* 开启弹性布局 */
     display: flex;
-    align-items: center;
+    /* 设置主轴方向 */
     justify-content: space-between;
+    /* 设置侧轴方向 */
+    align-items: center;
 }
 
-.content>dl>dd:nth-of-type(3)>input{
+.content>dl>dd:nth-of-type(3)>input {
+    /* 设置content的子元素dl的子元素dd的子元素input的宽 */
     width: 70px;
+    /* 设置content的子元素dl的子元素dd的子元素input的高 */
     height: 34px;
+    /* 设置背景颜色 */
     background-color: #4AB6D6;
+    /* 设置字体颜色 */
     color: #fff;
+    /* 设置字体加粗 */
     border-radius: 10px;
-    border:0px;
+    border: 0px;
 }
-
