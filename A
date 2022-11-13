@@ -1,4 +1,4 @@
-<script>
+    <script>
         //声明一个数组存放级联数据
         var arr = [];
         arr['广西省'] = ['来宾市', '南宁市', '百色市'];
@@ -27,6 +27,7 @@
                 })
                 //调用统计函数
                 totoal();
+
                 //鼠标悬浮时展示下拉框
                 $(".nav-menu-item").hover(function () {
                     $(this).find("ul").slideToggle(1000);
@@ -43,7 +44,8 @@
                 $(".nav-menu-item:eq(1)").click(function () {
                     //隐藏首页
                     $(".container").eq(3).hide();
-                    $(".container").eq(2).show();
+                    $(".container").eq(2).hide();
+                    $(".container").eq(1).hide();
                     //显示购物车
                     $(".container").eq(4).show();
 
