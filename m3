@@ -67,7 +67,7 @@
                 //将新建的tr追加到购物车table中
                 $(".ShoppingCart table").append($tr);
                 //重新统计购物车数据
-                total();
+                totoal();
             })
             //使用模板字符串添加表格数据
             $(".content-box :button").click(function () {
