@@ -1,0 +1,43 @@
+
+        $(function () {
+            $(":text").blur(function () {
+                //对比账号是否有十一位
+                if ($(this).val().length == 11
+                //对比账号开头是否是1
+                    && $(this).val().substring(0, 1) == "1"
+                    // 对比账号是否是全数字
+                    && parseInt($(this).val()) == $(this).val()) {
+                    $(this).next().hide()
+                } else {
+                    $(this).next().show()
+                }
+            })
+            //验证账号密码是否正确
+            $("form").submit(function () {
+                // 设置账号密码
+                if ($(":text").val() == "15266668888" && (":password").val() == "123") {
+                    // 密码正确返回true
+                    return true;
+                } else
+                //错误返回false
+                    alert("账号密码不正确")
+                return false;
+            })
+        })
+
+
+    //      //先声明可以登录的账号和密码
+    // var username = '15078777390';
+    // var password = '123';
+
+    // //声明登录函数  返回true form表单会正常提交 返回false 终止提交S
+    // function A() {
+    //     if ($(":text").val() == username && $(":password").val() == password) {
+    //         return true;
+    //     }
+    //     alert('账号密码不正确');
+    //     return false;
+    // }
+
+//在form后添加
+    // <form action="index.html"onsubmit="return A()">
