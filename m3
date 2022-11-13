@@ -1,4 +1,4 @@
-<script>
+ <script>
         //声明一个数组存放级联数据
         var arr = [];
         arr['广西省'] = ['来宾市', '南宁市', '百色市'];
@@ -52,18 +52,25 @@
                 //显示购物车
                 $(".container").eq(2).show();
             })
+            // <dt><img src="images/book4.jpg" alt=""></dt>
+            // <dd>
+            //     <span>书名：<label>数据结构</label></span>
+            //     <span>分类：<label>编程</label></span>
+            //     <span>￥40.00</span>
+            //     <input type="button" value="购买">
+            // </dd>
             //为所有图片绑定单击事件
-            $("#content dt").click(function () {
+            $(".content-box dl dt").click(function () {
                 $tr = $(`<tr>
                         <td><input type="checkbox" onchange="checkChange(this)"></td>
-                        <td>${$(this).next("dd").prev('span').find('label').html()}</td>
-                        <td>${$(this).next("dd").find('label').next('span').find('label').html()}</td>
+                        <td>${$(this).next("dd").find('span').find('label').html()}</td>
+                        <td>${$(this).next("dd").find('span').next('span').find('label').html()}</td>
                         <td>${$(this).next("dd").find('span').next('span').next('span').html().replace('￥', '')}</td>
                         <td>1</td>
                         <td>${$(this).next("dd").find('span').next('span').next('span').html().replace('￥', '')}</td>
                         <td><a href="javascript:void(0)" onclick="del(this)">删除</a></td>
                         </tr>`
-                );
+                )
                 //将新建的tr追加到购物车table中
                 $(".ShoppingCart table").append($tr);
                 //重新统计购物车数据
@@ -73,11 +80,11 @@
             $(".content-box :button").click(function () {
                 $tr = $(`<tr>
                     <td><input type="checkbox" onchange="checkChange(this)"></td>
-                    <td>${$(this).prev().prev().prev("span").find("label").html()}</td>
-                    <td>${$(this).prev().prev("span").find("label").html()}</td>
-                    <td>${$(this).prev("span").html().replace("￥", "")}</td>
+                    <td>${$(this).prev().prev().prev('span').find('label').html()}</td>
+                    <td>${$(this).prev().prev('span').find('label').html()}</td>
+                    <td>${$(this).prev('span').html().replace('￥', '')}</td>
                     <td>1</td>
-                    <td>${$(this).prev("span").html().replace("￥", "")}</td>
+                    <td>${$(this).prev('span').html().replace('￥', '')}</td>
                     <td><a href="javascript:void(0)" onclick="del(this)">删除</a></td>
                     </tr>`)
                 //追加到table表格中
