@@ -1,0 +1,180 @@
+package com.hoosee1;
+
+import com.hoosee.ReceiveRunnable;
+import com.hoosee.SendRunnable;
+import com.hoosee.ServerReceiveRunnable;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class t {
+    //服务端
+    public class Server {
+
+        //用于存储所有负责跟客户端通信的socket代码
+        static List<Socket> socketList = new ArrayList<Socket>();
+
+        public static void main(String[] args) {
+
+            try {
+                //创建服务器ServerSocket
+                ServerSocket serverSocket = new ServerSocket(8888);
+                System.out.println("服务端启动成功");
+                //监听客户端的连接，并生成代理Socket
+                while (true) {
+                    Socket socket = serverSocket.accept();
+                    //将代理socket添加到socketList中
+                    socketList.add(socket);
+
+                    //创建发送信息的线程
+//                SendRunnable sendRunnable = new SendRunnable(socket,"服务端：");
+//                new Thread(sendRunnable).start();
+                    //创建接收信息的线程
+//                ReceiveRunnable receiveRunnable = new ReceiveRunnable(socket);
+//                new Thread(receiveRunnable).start();
+
+                    //使用服务端专用输入输出线程（广播线程）进行业务处理
+                    com.hoosee.ServerReceiveRunnable serverReceiveRunnable = new ServerReceiveRunnable(socket, socketList);
+                    new Thread(serverReceiveRunnable).start();
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+    //客户端
+    public class Client {
+
+
+        public static void main(String[] args) {
+
+            try {
+                //创建Socket并连接到服务器
+                Socket socket = new Socket("127.0.0.1", 8888);
+                //创建发送信息的线程
+                com.hoosee.SendRunnable sendRunnable = new SendRunnable(socket, "王五：");
+                new Thread(sendRunnable).start();
+                //创建接收信息的线程
+                com.hoosee.ReceiveRunnable receiveRunnable = new ReceiveRunnable(socket);
+                new Thread(receiveRunnable).start();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    //ReceiveRunnable
+    public class ReceiveRunnable implements Runnable {
+
+        Socket socket;
+
+        public ReceiveRunnable(Socket socket) {
+
+            this.socket = socket;
+        }
+
+        @Override
+        public void run() {
+            try {
+                //通过socket获取输入流
+                InputStream inputStream = socket.getInputStream();
+                while (true) {
+                    //从输入流中读取信息（byte[]），并且将byte[]转换成字符串
+                    byte[] data = new byte[1024];
+                    inputStream.read(data);
+                    String message = new String(data);
+                    //在控制台中打印接收到的信息
+                    System.out.println(message);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //SendRunnable
+
+    public class SendRunnable implements Runnable {
+
+        Socket socket;
+        String name;//用于存放发送信息的端的名称
+        Scanner scanner = new Scanner(System.in);
+
+        public SendRunnable(Socket socket, String name) {
+            this.socket = socket;
+            this.name = name;
+        }
+
+        @Override
+        public void run() {
+            try {
+                //通过socket获取输出流
+                OutputStream outputStream = socket.getOutputStream();
+                while (true) {
+                    //通过Scanner对象获取用户的输入
+                    String message = scanner.next();
+                    //通过输出流将内容发送出去
+                    message=name+message;// 张三: +  你好
+                    outputStream.write(message.getBytes());
+                    outputStream.flush();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    //ServerReceiveRunnable
+
+    public class ServerReceiveRunnable implements Runnable {
+
+        Socket socket;
+        List<Socket> socketList;
+
+        public ServerReceiveRunnable(Socket socket, List<Socket> socketList) {
+            this.socket = socket;
+            this.socketList = socketList;
+        }
+
+        @Override
+        public void run() {
+            try {
+                //监听客户端发来的信息（通过输入流接收信息）
+                InputStream inputStream = socket.getInputStream();
+                while (true) {
+                    //从输入流中读取信息（byte[]），并且将byte[]转换成字符串
+                    byte[] data = new byte[1024];
+                    inputStream.read(data);
+                    String message = new String(data);
+                    //在控制台中打印接收到的信息
+                    System.out.println(message);
+
+                    //广播通知所有客户端（通过输出流遍历输出信息）
+                    for (Socket socket : socketList) {
+                        //挨个向客户端发送信息
+                        //通过socket获取输出流
+                        OutputStream outputStream = socket.getOutputStream();
+                        //通过输出流将内容发送出去
+                        outputStream.write(message.getBytes());
+                        outputStream.flush();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+}
