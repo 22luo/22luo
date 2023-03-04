@@ -1,0 +1,530 @@
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css" media="all and (max-width:1024px)">
+    <link rel="stylesheet" href="css/style2.css" media="all and (max-width:768px)">
+
+
+//一
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+.dingbu {
+    width: 100%;
+    height: 60px;
+
+    background-color: aquamarine;
+}
+
+.dingbu>div {
+    width: 72%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dingbu>div>ul {
+    width: 50%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dingbu>div>ul>li {
+    width: 20%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+}
+
+.dingbu>div>div>img{
+    width: 50px;
+    height: 50px;
+    display: none;
+}
+
+.dingbu>div>ul>li:hover {
+    background-color: aqua;
+    color: white;
+}
+
+.toubu {
+    width: 72%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toubu>img {
+    width: 140px;
+    height: 140px;
+
+    border-radius: 100px;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+@keyframes img {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.toubu>img:hover {
+    animation: img 2s linear 0s infinite;
+}
+
+.toubu>input {
+    width: 200px;
+    height: 30px;
+
+    border-radius: 30px;
+    border-color: aqua;
+}
+
+.toubu>input:hover {
+    width: 300px;
+    transition: width 400ms 0s;
+
+    background-image: url(../images/search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.biaoti {
+    width: 72%;
+    height: 80px;
+
+    margin: 0px auto;
+}
+
+.biaoti>p {
+    width: 240px;
+    height: 80px;
+
+    font-weight: bold;
+    background-color: aqua;
+
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shanpin {
+    width: 72%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.shanpin>dl {
+    width: 25%;
+    border: 4px solid #d652a3;
+    padding: 20px;
+
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.shanpin>dl>dt>img {
+    width: 90%;
+}
+
+.shanpin>dl>dd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shanpin>dl>dd>input {
+    width: 70px;
+    height: 34px;
+    background-color: #4ab6d6;
+    border: 0px;
+    border-radius: 10px;
+    color: wheat;
+}
+
+.shanpin>dl>dt>img:hover {
+    transform: scale(1.2);
+    transition: all 400ms 0s;
+}
+
+
+
+
+
+
+
+//二
+
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+.dingbu {
+    width: 100%;
+    height: 60px;
+
+    background-color: aquamarine;
+}
+
+.dingbu>div {
+    width: 88%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dingbu>div>ul {
+    width: 88%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dingbu>div>ul>li {
+    width: 20%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+}
+
+.dingbu>div>ul>li:hover {
+    background-color: aqua;
+    color: white;
+}
+
+.dingbu>div>div>img{
+    width: 50px;
+    height: 50px;
+    display: none;
+}
+
+.toubu {
+    width: 88%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toubu>img {
+    width: 140px;
+    height: 140px;
+
+    border-radius: 100px;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+@keyframes img {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.toubu>img:hover {
+    animation: img 2s linear 0s infinite;
+}
+
+.toubu>input {
+    width: 200px;
+    height: 30px;
+
+    border-radius: 30px;
+    border-color: aqua;
+}
+
+.toubu>input:hover {
+    width: 300px;
+    transition: width 400ms 0s;
+
+    background-image: url(../images/search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.biaoti {
+    width: 88%;
+    height: 80px;
+
+    margin: 0px auto;
+}
+
+.biaoti>p {
+    width: 240px;
+    height: 80px;
+
+    font-weight: bold;
+    background-color: aqua;
+
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shanpin {
+    width: 88%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.shanpin>dl {
+    width: 50%;
+    border: 4px solid #d652a3;
+    padding: 20px;
+
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.shanpin>dl>dt>img {
+    width: 90%;
+}
+
+.shanpin>dl>dd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shanpin>dl>dd>input {
+    width: 70px;
+    height: 34px;
+    background-color: #4ab6d6;
+    border: 0px;
+    border-radius: 10px;
+    color: wheat;
+}
+
+.shanpin>dl>dt>img:hover {
+    transform: scale(1.2);
+    transition: all 400ms 0s;
+}
+
+
+
+
+
+
+//三
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+.dingbu {
+    width: 100%;
+    height: 60px;
+
+    background-color: aquamarine;
+}
+
+.dingbu>div {
+    width: 96%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dingbu>div>ul {
+    width: 50%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    display: none;
+}
+
+.dingbu>div>ul>li {
+    width: 20%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+}
+
+.dingbu>div>ul>li:hover {
+    background-color: aqua;
+    color: white;
+}
+
+.dingbu>div>div>img{
+    width: 50px;
+    height: 50px;
+}
+
+.toubu {
+    width: 96%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toubu>img {
+    width: 140px;
+    height: 140px;
+
+    border-radius: 100px;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+@keyframes img {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.toubu>img:hover {
+    animation: img 2s linear 0s infinite;
+}
+
+.toubu>input {
+    width: 200px;
+    height: 30px;
+
+    border-radius: 30px;
+    border-color: aqua;
+}
+
+.toubu>input:hover {
+    width: 300px;
+    transition: width 400ms 0s;
+
+    background-image: url(../images/search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.biaoti {
+    width: 96%;
+    height: 80px;
+
+    margin: 0px auto;
+}
+
+.biaoti>p {
+    width: 240px;
+    height: 80px;
+
+    font-weight: bold;
+    background-color: aqua;
+
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shanpin {
+    width: 96%;
+
+    margin: 0px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.shanpin>dl {
+    width: 100%;
+    border: 4px solid #d652a3;
+    padding: 20px;
+
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.shanpin>dl>dt>img {
+    width: 90%;
+}
+
+.shanpin>dl>dd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shanpin>dl>dd>input {
+    width: 70px;
+    height: 34px;
+    background-color: #4ab6d6;
+    border: 0px;
+    border-radius: 10px;
+    color: wheat;
+}
+
+.shanpin>dl>dt>img:hover {
+    transform: scale(1.2);
+    transition: all 400ms 0s;
+}
