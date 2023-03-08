@@ -49,7 +49,7 @@ var uname = 'admin';
                 $(".ShoppingCart table").append($tr);
 
             })
-
+    //全选
             $(".CheckAll").click(function () {
                 if ($(this).prop('checked')) {
                     $(".ShoppingCart :checkbox:not(.CheckAll)").prop('checked', true);
