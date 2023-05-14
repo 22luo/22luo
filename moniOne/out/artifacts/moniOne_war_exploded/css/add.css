@@ -1,0 +1,30 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#main{
+    width: 300px;
+    margin: 50px auto;
+}
+table{
+    width: 100%;
+    border-collapse:collapse;
+
+}
+
+table,tr,th,td{
+    border: 1px solid;
+}
+
+tr>td:nth-of-type(1){
+    text-align: right;
+}
+
+tr:last-of-type>td{
+    text-align: center;
+}
+
+input[type='submit'],input[type='reset']{
+    width: 60px;
+}

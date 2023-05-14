@@ -1,0 +1,27 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#main{
+    width: 500px;
+    margin: 50px auto;
+}
+
+fieldset{
+    height: 52px;
+}
+
+table{
+    width: 100%;
+    border-collapse:collapse;
+
+}
+
+table,tr,th,td{
+    border: 1px solid;
+}
+
+tr:last-of-type{
+    text-align: right;
+}
